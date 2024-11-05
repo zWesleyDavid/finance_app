@@ -46,52 +46,51 @@ class _DespesaListScreenState extends State<DespesaListScreen> {
   }
 
   @override
-Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-      title: Text('Despesas'),
-    ),
-    body: ListView.builder(
-      itemCount: despesas.length,
-      itemBuilder: (context, index) {
-        final despesa = despesas[index];
-        return Dismissible(
-          key: Key(despesa['id'].toString()),
-          background: Container(color: Colors.red, child: Icon(Icons.delete)),
-          direction: DismissDirection.endToStart,
-          onDismissed: (direction) {
-            if (direction == DismissDirection.endToStart) {
-              deleteDespesa(despesa['id'], index);
-            }
-          },
-          child: ListTile(
-            title: Text(despesa['titulo']),
-            subtitle: Text('Valor: ${despesa['valor']}'),
-            trailing: IconButton(
-              icon: Icon(Icons.edit),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DespesaForm(despesa: despesa),
-                  ),
-                ).then((value) => fetchDespesas());
-              },
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Despesas'),
+      ),
+      body: ListView.builder(
+        itemCount: despesas.length,
+        itemBuilder: (context, index) {
+          final despesa = despesas[index];
+          return Dismissible(
+            key: Key(despesa['id'].toString()),
+            background: Container(color: Colors.red, child: Icon(Icons.delete)),
+            direction: DismissDirection.endToStart,
+            onDismissed: (direction) {
+              if (direction == DismissDirection.endToStart) {
+                deleteDespesa(despesa['id'], index);
+              }
+            },
+            child: ListTile(
+              title: Text(despesa['titulo']),
+              subtitle: Text('Valor: ${despesa['valor']}'),
+              trailing: IconButton(
+                icon: Icon(Icons.edit),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DespesaForm(despesa: despesa),
+                    ),
+                  ).then((value) => fetchDespesas());
+                },
+              ),
             ),
-          ),
-        );
-      },
-    ),
-    floatingActionButton: FloatingActionButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => DespesaForm()),
-        ).then((value) => fetchDespesas());
-      },
-      child: Icon(Icons.add),
-    ),
-  );
-}
-
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => DespesaForm()),
+          ).then((value) => fetchDespesas());
+        },
+        child: Icon(Icons.add),
+      ),
+    );
+  }
 }

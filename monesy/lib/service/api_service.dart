@@ -4,7 +4,6 @@ import 'package:http/http.dart';
 import 'package:monesy/domain/despesas.dart';
 
 class ApiService {
-
   Client client;
 
   ApiService(this.client);
@@ -12,12 +11,11 @@ class ApiService {
   final String baseUrl = 'http://localhost:3000';
 
   Future<Despesas> getDespesa() async {
-
     Uri uri = Uri.parse("http://localhost:3000/despesas");
 
     Response response = await client.get(uri);
 
-    if(response.statusCode == 200){
+    if (response.statusCode == 200) {
       return Despesas.fromJson(jsonDecode(response.body));
     }
 

@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: SplashScreen(),
-      debugShowCheckedModeBanner: false,  // Para remover o banner de debug
+      debugShowCheckedModeBanner: false, // Para remover o banner de debug
     );
   }
 }
