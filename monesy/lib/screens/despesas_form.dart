@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import '../service/api_service.dart';
 
 class DespesaForm extends StatefulWidget {
@@ -34,11 +35,12 @@ class _DespesaFormState extends State<DespesaForm> {
         'descricao': _descricao,
         'valor': double.parse(_valor),
       };
+      final apiService = ApiService(Client());
       try {
         if (widget.despesa == null) {
-          await ApiService().addDespesa(despesa);
+          await apiService.addDespesa(despesa);
         } else {
-          await ApiService().updateDespesa(widget.despesa!['id'], despesa);
+          await apiService.updateDespesa(widget.despesa!['id'], despesa);
         }
         Navigator.pop(context);
       } catch (e) {

@@ -1,8 +1,28 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
+import 'package:monesy/domain/despesas.dart';
 
 class ApiService {
+
+  Client client;
+
+  ApiService(this.client);
+
   final String baseUrl = 'http://localhost:3000';
+
+  Future<Despesas> getDespesa() async {
+
+    Uri uri = Uri.parse("http://localhost:3000/despesas");
+
+    Response response = await client.get(uri);
+
+    if(response.statusCode == 200){
+      return Despesas.fromJson(jsonDecode(response.body));
+    }
+
+    throw Exception('Erro');
+  }
 
   Future<List<dynamic>> fetchDespesas() async {
     final response = await http.get(Uri.parse('$baseUrl/despesas'));

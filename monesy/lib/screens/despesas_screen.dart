@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'despesas_form.dart';
 import '../service/api_service.dart';
 
@@ -8,7 +9,7 @@ class DespesaListScreen extends StatefulWidget {
 }
 
 class _DespesaListScreenState extends State<DespesaListScreen> {
-  final ApiService apiService = ApiService();
+  final ApiService apiService = ApiService(Client());
   List<dynamic> despesas = [];
   bool isLoading = true;
 

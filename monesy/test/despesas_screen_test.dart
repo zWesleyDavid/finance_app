@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:monesy/domain/despesas.dart';
 import 'package:monesy/service/api_service.dart';
 
 class MyMockClient extends Mock implements Client {
@@ -20,7 +21,24 @@ void main() {
 
     ApiService service = ApiService(mockClient);
 
-    ApiService resultado = await service.fetchDespesas();
+    Despesas resultado = await service.getDespesa();
+
+    expect(resultado.id, '3a26');
+    expect(resultado.titulo, 'Luz');
+    expect(resultado.descricao, 'Conta de luz');
+    expect(resultado.valor, 150);
+    
+  });
+
+  test('',() async {
+
+  });
+
+  test('',() async {
+    
+  });
+
+  test('',() async {
     
   });
 
