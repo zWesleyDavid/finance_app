@@ -1,16 +1,7 @@
 {
-  "despesas": [
-    {
-      "id": "26a1",
-      "titulo": "TESTE",
-      "descricao": "TESTE",
-      "valor": 500
-    },
-    {
-      "id": "33a9",
-      "titulo": "testando",
-      "descricao": "testando descrição",
-      "valor": 530
-    }
-  ]
+  "despesas": [],
+  "saldoCarteira": {
+    "valor": 0
+  },
+  "extrato": []
 }

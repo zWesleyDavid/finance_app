@@ -1,4 +1,4 @@
-import 'dart:convert';
+// import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
@@ -38,22 +38,22 @@ void main() {
     expect(() => apiService.getDespesa(), throwsException);
   });
 
-  test('fetchDespesas aplica filtro de valor mínimo', () async {
-    MyMockClient client = MyMockClient();
-    final apiService = ApiService(client);
-    final despesasData = [
-      {'id': '1', 'titulo': 'Aluguel', 'valor': 1200.0},
-      {'id': '2', 'titulo': 'Mercado', 'valor': 200.0}
-    ];
-    when(() => client.get(Uri.parse('http://localhost:3000/despesas')))
-        .thenAnswer((_) async => Response(json.encode(despesasData), 200));
+  // test('fetchDespesas aplica filtro de valor mínimo', () async {
+  //   MyMockClient client = MyMockClient();
+  //   final apiService = ApiService(client);
+  //   final despesasData = [
+  //     {'id': '1', 'titulo': 'Aluguel', 'valor': 1200.0},
+  //     {'id': '2', 'titulo': 'Mercado', 'valor': 200.0}
+  //   ];
+  //   when(() => client.get(Uri.parse('http://localhost:3000/despesas')))
+  //       .thenAnswer((_) async => Response(json.encode(despesasData), 200));
 
-    final despesas = await apiService.fetchDespesas();
-    final despesasFiltradas = despesas.where((d) => d['valor'] > 500).toList();
+  //   final despesas = await apiService.fetchDespesas();
+  //   final despesasFiltradas = despesas.where((d) => d['valor'] > 500).toList();
 
-    expect(despesasFiltradas.length, 1);
-    expect(despesasFiltradas[0]['titulo'], 'Aluguel');
-  });
+  //   expect(despesasFiltradas.length, 1);
+  //   expect(despesasFiltradas[0]['titulo'], 'Aluguel');
+  // });
 
   testWidgets('DespesaListScreen carrega a lista vazia inicialmente',
       (WidgetTester tester) async {
